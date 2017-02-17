@@ -1,3 +1,3 @@
 var movePlugins = require('./moveplugins').movePlugins
 
-console.log(movePlugins)
+movePlugins('plugins', 'src/')

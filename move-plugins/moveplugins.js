@@ -5,9 +5,5 @@ module.exports.movePlugins = function(src, dest)
 		if (error) {
 			console.error(`exec error: ${error}`)
 		}
-		else {
-			console.log(`stdout: ${stdout}`)
-			console.log(`stderr: ${stderr}`)
-		}
 	})
 }
