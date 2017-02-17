@@ -39,7 +39,11 @@
     "extends": "standard",
     "globals": {
       "test": true,
-      "expect": true
+      "expect": true,
+      "fetch": true
+    },
+    "rules": {
+      "no-unused-vars": ["error", {"vars": "all", "varsIgnorePattern": "^_|React", "args": "none"}]
     }
   },
   "proxy": "http://localhost:9000"
