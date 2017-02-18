@@ -31,8 +31,10 @@ for (var i = 0; i < plugins.length; i++) {
   */
   const plugin = plugins[i]
   const plugingRef = plugin.ref
-  const pluginFeatures = plugingRef.features
-  handleFeatures(pluginFeatures, plugin)
+  if (isCompatible(plugin.ref)) {
+    const pluginFeatures = plugingRef.features
+    handleFeatures(pluginFeatures, plugin)
+  }
 }
 
 function handleFeatures (pluginFeatures, plugin) {
@@ -54,4 +56,38 @@ function handleFeatures (pluginFeatures, plugin) {
   }
 }
 
+function isCompatible (plugin) {
+  // TODO ...
+  let manifest = plugin.manifest
+  try {
+    checkManifest(manifest) // check existance and syntax validity
+    checkPluginCompatibility(manifest) // check compatibility of dependencies
+    return checkManifest && checkPluginCompatibility
+  } catch (e) {
+    if (e && e.msg) {
+      console.log(e.msg)
+    } else {
+      console.log(e)
+    }
+  }
+}
+
+function checkManifest (mainfest) {
+  // TODO check manifest existance and syntax
+  return true
+}
+function checkPluginCompatibility (manifest) {
+  checkCoreDependencies(manifest.dependencies.core)
+  checkPluginsDependencies(manifest.dependencies.plugins)
+  return checkCoreDependencies && checkPluginsDependencies
+  // TODO
+}
+function checkCoreDependencies (core) {
+  // TODO check core.pitrol ,core.hardware , core.node
+  return true
+}
+function checkPluginsDependencies (plugins) {
+  // TODO check plugins[i]
+  return true
+}
 module.exports = app
