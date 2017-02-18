@@ -13,14 +13,14 @@
 PiTrol is a project that allows you to monitor and control your Raspberry Pi over a web browser.
 
 ## Screenshots
-<img src="screenshots/1.png" width=300 />
+<imfg src="screenshots/1.png" width=300 />
 <img src="screenshots/2.png" width=300 />
 <img src="screenshots/3.png" width=300 />
 
 ## Usage
 1. Check out a copy of the project
   ```bash
-    $ git clone https://github.com/AlKass/PiTrol && cd PiTrol
+    $ git clone https://github.com/Lamassau/PiTrol && cd PiTrol
   ```
 
 2. Install all dependencies
@@ -39,12 +39,9 @@ PiTrol is a project that allows you to monitor and control your Raspberry Pi ove
   ```
 
 ## How to Contribute
-Have a feature in mind you'd like to add to the project? [Send a pull request](https://github.com/AlKass/PiTrol/pulls)
+Have a feature in mind you'd like to add to the project? Send a pull request
 
-Want a feature that you don't quiet know how to implement? [Place an issue](https://github.com/AlKass/PiTrol/issues)
-
-## Tools & Resources
-* We maintain our design planning and development process in a Waffle.io management board. Click [here](https://waffle.io/AlKass/PiTrol) to join the development board.
+Want a feature that you don't quiet know how to implement? Place an issue
 
 ## Authors
 [Fadi Hanna Al-Kass] (https://github.com/alkass)
