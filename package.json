@@ -20,7 +20,7 @@
     "classnames": "^2.2.5",
     "cors": "^2.8.1",
     "express": "^4.14.0",
-    "morgan": "^1.7.0",
+    "morgan": "^1.8.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.6.1"
@@ -43,7 +43,14 @@
       "fetch": true
     },
     "rules": {
-      "no-unused-vars": ["error", {"vars": "all", "varsIgnorePattern": "^_|React", "args": "none"}]
+      "no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "varsIgnorePattern": "^_|React",
+          "args": "none"
+        }
+      ]
     }
   },
   "proxy": "http://localhost:9000"
