@@ -1,21 +1,16 @@
 const express = require('express')
+const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
 const plugins = require('../plugins')
 
 const app = express()
 
-function logger (req, res, next) {
-  // TODO: re-implement to show more details
-  console.log(`Received a ${req.method} request`)
-  next()
-}
-
 // Middleware Settings
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, '..', 'build')))
 app.use('/public', express.static(path.resolve(__dirname, '..', 'public')))
-app.use(logger)
+app.use(morgan('combined'))
 
 // Allowed HTTP methods
 const METHODS = {
