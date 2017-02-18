@@ -30,9 +30,12 @@ for (var i = 0; i < plugins.length; i++) {
      to its specifications.
   */
   const plugin = plugins[i]
-  const pluginName = plugin.name
   const plugingRef = plugin.ref
   const pluginFeatures = plugingRef.features
+  handleFeatures(pluginFeatures, plugin)
+}
+
+function handleFeatures (pluginFeatures, plugin) {
   for (var j = 0; j < pluginFeatures.length; j++) {
     const pluginFeature = pluginFeatures[j]
     const pluginFeatureName = pluginFeature.name
@@ -43,7 +46,7 @@ for (var i = 0; i < plugins.length; i++) {
       if (METHODS[pluginFeaturesMethod] === undefined) {
         console.error(`${pluginFeaturesMethod} is invalid on upsupported request. Skipping this feature`)
       } else {
-        const subAPIURL = `/API/${pluginName}/${pluginFeatureName}`
+        const subAPIURL = `/API/${plugin.name}/${pluginFeatureName}`
         console.log(`Serving ${pluginFeaturesMethod} @ ${subAPIURL}`)
         METHODS[pluginFeaturesMethod](subAPIURL, pluginFeatureRef)
       }
