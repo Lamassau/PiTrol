@@ -41,7 +41,13 @@
     "globals": {
       "test": true,
       "expect": true,
-      "fetch": true
+      "fetch": true,
+      "it": true,
+      "describe": true,
+      "beforeEach": true,
+      "before": true,
+      "afterEach": true,
+      "after": true
     },
     "rules": {
       "no-unused-vars": [

@@ -79,7 +79,7 @@ function isCompatible (plugin) {
  * @param {Object} manifest
  * @return {boolean}
  */
-function checkManifest (manifest) {
+export function checkManifest (manifest) {
   const required = ['name', 'description', 'version', 'dependencies']
   const optional = ['icon', 'author', 'repo', 'license', 'plugins']
   for (let key in manifest) {
@@ -106,6 +106,7 @@ function checkPluginCompatibility (manifest) {
   return checkCoreDependencies(manifest.dependencies.core, manifest.name) &&
     checkPluginsDependencies(manifest.dependencies.plugins)
 }
+
 function checkCoreDependencies (core, name) {
   const pitrolVer = require('../package.json').version
   const nodeVer = process.version
@@ -137,8 +138,9 @@ function checkCoreDependencies (core, name) {
   }
   return true
 }
+
 function checkPluginsDependencies (plugins) {
   // TODO check plugins[i]
   return true
 }
-module.exports = app
+module.exports = {app, checkManifest, checkCoreDependencies}
