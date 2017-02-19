@@ -1,0 +1,18 @@
+{
+  "name":"PiStatus",
+  "description" : "The Default Sysinfo plugin for PiTrol",
+  "version" : "1.0.0",
+  "icon" : "",
+  "author":"Al-Kass",
+  "repo":"",
+  "license":"",
+  "dependencies":{
+    "core" :{
+      "pitrol": "1.0.0",
+      "hardware":["zero","2","3"],
+      "node" : "^6.0.0"
+    },
+    "plugins":{
+    }
+  }
+}

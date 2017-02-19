@@ -23,7 +23,8 @@
     "morgan": "^1.8.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-router": "^2.6.1"
+    "react-router": "^2.6.1",
+    "semver": "^5.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,7 +41,13 @@
     "globals": {
       "test": true,
       "expect": true,
-      "fetch": true
+      "fetch": true,
+      "it": true,
+      "describe": true,
+      "beforeEach": true,
+      "before": true,
+      "afterEach": true,
+      "after": true
     },
     "rules": {
       "no-unused-vars": [

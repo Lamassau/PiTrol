@@ -1,7 +1,9 @@
 var requests = require('./requesthandler')
 var ui = require('./uicomponent')
+const manifest = require('./manifest.json')
 
 module.exports = {
+  manifest: manifest,
   uiComponent: {
     props: {
       loadFrom: '/API/PiStatus/SystemUptime', // required field
