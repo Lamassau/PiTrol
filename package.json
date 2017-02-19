@@ -8,7 +8,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "eslint-config-standard": "^6.2.1",
-    "eslint-plugin-promise": "^3.4.1",
+    "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-standard": "^2.0.1",
     "jest": "^18.1.0",
     "mz": "^2.4.0",
@@ -23,7 +23,7 @@
     "morgan": "^1.8.1",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
-    "react-router": "^2.6.1",
+    "react-router": "^3.0.2",
     "semver": "^5.3.0"
   },
   "scripts": {
@@ -32,7 +32,6 @@
     "eslint": "./node_modules/.bin/eslint .",
     "prebuild": "node move-plugins",
     "build": "react-scripts build",
-    "postbuild": "rm -r src/plugins/",
     "eject": "react-scripts eject",
     "test": "jest --coverage"
   },
