@@ -32,7 +32,6 @@
     "eslint": "./node_modules/.bin/eslint .",
     "prebuild": "node move-plugins",
     "build": "react-scripts build",
-    "postbuild": "rm -r src/plugins/",
     "eject": "react-scripts eject",
     "test": "jest --coverage"
   },
