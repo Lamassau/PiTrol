@@ -3,6 +3,7 @@ const morgan = require('morgan')
 const cors = require('cors')
 const path = require('path')
 const plugins = require('../plugins')
+const semVer = require('semver')
 
 const app = express()
 
@@ -57,12 +58,10 @@ function handleFeatures (pluginFeatures, plugin) {
 }
 
 function isCompatible (plugin) {
-  // TODO ...
   let manifest = plugin.manifest
   try {
-    checkManifest(manifest) // check existance and syntax validity
-    checkPluginCompatibility(manifest) // check compatibility of dependencies
-    return checkManifest && checkPluginCompatibility
+    // check existance and syntax validity && check compatibility of dependencies
+    return checkManifest(manifest) && checkPluginCompatibility(manifest)
   } catch (e) {
     if (e && e.msg) {
       console.log(e.msg)
@@ -72,18 +71,70 @@ function isCompatible (plugin) {
   }
 }
 
-function checkManifest (mainfest) {
-  // TODO check manifest existance and syntax
+/**
+ * Checks and cleans the manifest based on the required and optional fields defined within the function
+ * Any extra fields in the manifest are removed to prevent people from injecting things through manifests
+ * Probably highly unlikely
+ *
+ * @param {Object} manifest
+ * @return {boolean}
+ */
+function checkManifest (manifest) {
+  const required = ['name', 'description', 'version', 'dependencies']
+  const optional = ['icon', 'author', 'repo', 'license', 'plugins']
+  for (let key in manifest) {
+    let index = required.indexOf(key)
+    let optionalIndex = optional.indexOf(key)
+    if (index === -1 && optionalIndex === -1) {
+      delete manifest[key]
+    } else {
+      if (index !== -1) {
+        required.splice(index, 1)
+      }
+      if (optionalIndex !== -1) {
+        optional.splice(optionalIndex, 1)
+      }
+    }
+  }
+  if (required.length !== 0) {
+    throw new Error(`Plugin ${manifest.name} missing required field (${required[0]}) from manifest file`)
+  }
   return true
 }
+
 function checkPluginCompatibility (manifest) {
-  checkCoreDependencies(manifest.dependencies.core)
-  checkPluginsDependencies(manifest.dependencies.plugins)
-  return checkCoreDependencies && checkPluginsDependencies
-  // TODO
+  return checkCoreDependencies(manifest.dependencies.core, manifest.name) &&
+    checkPluginsDependencies(manifest.dependencies.plugins)
 }
-function checkCoreDependencies (core) {
-  // TODO check core.pitrol ,core.hardware , core.node
+function checkCoreDependencies (core, name) {
+  const pitrolVer = require('../package.json').version
+  const nodeVer = process.version
+  if (!core) {
+    throw new Error(`Plugin ${name} missing dependencies core field from manifest file`)
+  }
+  if (!semVer.satisfies(pitrolVer, core.pitrol)) {
+    console.warn(`Plugin ${name} expects version: ${core.pitrol}, pitrol version: ${pitrolVer}`)
+    return false
+  }
+  // NOTE: we can get alot more specific including A B B+
+  // info source http://elinux.org/RPi_HardwareHistory
+  const piVers = ['zero', '2', '3']
+  if (!Array.isArray(core.hardware)) {
+    throw new Error(`Plugin ${name} hardware list is not an Array`)
+  }
+  if (core.hardware.length === 0) {
+    throw new Error(`Plugin ${name} hardware list does not contain any versions`)
+  }
+  core.hardware.forEach((hardware) => {
+    if (piVers.indexOf(hardware) === -1) {
+      throw new Error(`Plugin ${name} hardware version: ${hardware} is invalid`)
+    }
+  })
+  // TODO get pi version and check with actual hardware rather than just sudo checking for valid hardware name
+  if (!semVer.satisfies(nodeVer, core.node)) {
+    console.warn(`Plugin ${name} expects version: ${core.node}, node version: ${nodeVer}`)
+    return false
+  }
   return true
 }
 function checkPluginsDependencies (plugins) {
