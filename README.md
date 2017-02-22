@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 <div align="center">
-  <img src="favicon.ico" width=150 />
+  <img src="favicon.png" width=150 />
 </div>
 
 # PiTrol
