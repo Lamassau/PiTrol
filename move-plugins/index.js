@@ -1,3 +1,3 @@
 var movePlugins = require('./moveplugins').movePlugins
 
-movePlugins('plugins', 'src/')
+process.exit(movePlugins('plugins', 'src/') ? 0 : 1)
