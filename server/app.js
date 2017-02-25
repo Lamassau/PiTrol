@@ -11,7 +11,7 @@ const app = express()
 app.use(cors())
 app.use(express.static(path.resolve(__dirname, '..', 'build')))
 app.use('/public', express.static(path.resolve(__dirname, '..', 'public')))
-app.use(morgan('combined'))
+app.use(morgan('dev'))
 
 // Allowed HTTP methods
 const METHODS = {
