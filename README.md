@@ -39,7 +39,7 @@ PiTrol is a project that allows you to monitor and control your Raspberry Pi ove
   ```
 
 ## How to Contribute
-Contribution can be done in a number of different forms. If you'd like to add new functionalty or re-implement an existing piece, send a pull request and your code will be merged into the `master` branch as soon as it gets approved by two managers. If you have an idea or want to invest resources, open an issue or come join us at [Gitter](https://gitter.im/PiTrolx)
+Contribution can be done in a number of different forms. If you'd like to add new functionalty or re-implement an existing piece, send a pull request and your code will be merged into the `master` branch as soon as it gets approved by two reviewers. If you have an idea or want to invest resources, open an issue or come join us at [Gitter](https://gitter.im/PiTrolx)
 
 # Contributors
 Our list of contributors has everyonr who has ever invested time or resources in the project. [Check this list out](CONTRIBUTORS.md)
