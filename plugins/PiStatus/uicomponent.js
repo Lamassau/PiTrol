@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-module.exports.PiStatusComponent = class extends Component
-{
+module.exports.PiStatusComponent = class extends Component {
   constructor (props) {
     super(props)
     this.state = {
