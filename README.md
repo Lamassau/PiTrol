@@ -41,10 +41,10 @@ PiTrol is a project that allows you to monitor and control your Raspberry Pi ove
 ## How to Contribute
 Have a feature in mind you'd like to add to the project? Send a pull request
 
+# Contributors
+Our list of contributors has everyonr who has ever invested time or resources in the project. [Check this list out](CONTRIBUTORS.md)
+
 Want a feature that you don't quiet know how to implement? Place an issue
 
 ## Authors
 [Fadi Hanna Al-Kass] (https://github.com/alkass)
-
-## Contributors
-Our list of contributors contains everyone who has ever invested time or resources into the project. Check it out [here](CONTRIBUTORS.md)
